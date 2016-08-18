@@ -12,4 +12,5 @@ angular.module('medApp')
 			$state.go('breathe', {username: $scope.user.username});
 		}
 
+
 	})

@@ -27,7 +27,8 @@ angular.module('medApp', ['ui.router']);
 				})
 				.state('practice', {
 					url: '/practice/:username',
-					templateUrl: 'views/practice.html'
+					templateUrl: 'views/practice.html',
+					controller: 'practiceCtrl'
 				})
 
 

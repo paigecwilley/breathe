@@ -31,7 +31,6 @@ app.use(session({
 	saveUninitialized: false
 }));
 
-
 //HTML5 Mode Rewrite
 
 
@@ -70,53 +69,7 @@ app.post('/create-user', function(req, res, next){
 		err.status = 400;
 		return next(err);
 	}
-})
-
-
-//Create user breath
-
-app.post('/user-breath/:username', function(req, res, next){
-	// console.log('Req body: ', req.body);
-	// console.log('Req.params: ', req.params.username);
-
-	var breathData = {
-			created: req.body.created,
-			inhaleAvg: req.body.inhaleAvg,
-			exhaleAvg: req.body.exhaleAvg,
-			breathTotalAvg: req.body.breathTotalAvg
-	}
-	
-
-
-
-User.findOne({"username" : req.params.username}, function(err, user){
-	console.log(user);
-	console.log("Req from the findOne :" , req.body);
-	
-	console.log(breathData);
-	user.breaths.push(breathData);
-	user.save(function(err, breathresult){
-		console.log('push worked');
-	})
 });
-
-
-	//push into collection where username
-	// db.users.update(
-	// 	{username: req.params.username },
-	// 	{$push: {breaths: breathData}}
-	// )
-
-
-	// User.create(breathData, function(error, user){
-	// 	if(error){
-	// 		return next(error);
-	// 	} else {
-	// 		console.log('You added a breath to a user!')
-	// 	}
-	// });
-
-})
 
 //Login user
 
@@ -140,6 +93,65 @@ app.post('/login', function(req, res, next){
 		return next(err);
 	}
 });
+
+//Create user breath
+
+app.post('/user-breath/:username', function(req, res, next){
+	// console.log('Req body: ', req.body);
+	// console.log('Req.params: ', req.params.username);
+
+	var breathData = {
+		created: req.body.created,
+		inhaleAvg: req.body.inhaleAvg,
+		exhaleAvg: req.body.exhaleAvg,
+		breathTotalAvg: req.body.breathTotalAvg
+	}
+	
+
+
+
+	User.findOne({"username" : req.params.username}, function(err, user){
+		console.log(user);
+		console.log("Req from the findOne :" , req.body);
+
+		console.log(breathData);
+		user.breaths.push(breathData);
+		user.save(function(err, breathresult){
+			console.log('push worked');
+			res.send(breathresult);
+		})
+	});
+
+
+});
+
+//Get from server
+
+app.get('/get-breath/:username', function(req, res, next){
+
+	res.send('hey there!\n');
+
+	// User.findOne({"username" : req.params.username}, function(err, user){
+	// 	console.log(user);
+	// 	console.log("Req from the get breath: ", res.body);
+	// })
+});
+
+	//push into collection where username
+	// db.users.update(
+	// 	{username: req.params.username },
+	// 	{$push: {breaths: breathData}}
+	// )
+
+
+	// User.create(breathData, function(error, user){
+	// 	if(error){
+	// 		return next(error);
+	// 	} else {
+	// 		console.log('You added a breath to a user!')
+	// 	}
+	// });
+
 
 
 
