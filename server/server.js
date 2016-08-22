@@ -12,6 +12,8 @@ var app = express();
 
 var User = require('./models/user');
 
+var moment = require('moment');
+
 var BreathSchema = require('./models/breath');
 
 
@@ -75,6 +77,9 @@ app.post('/create-user', function(req, res, next){
 
 app.post('/login', function(req, res, next){
 	console.log(req.body);
+	if ('OPTIONS = req.method') {
+		return res.send(200);
+	}
 	if(req.body.username && req.body.password){
 		User.authenticate(req.body.username, req.body.password, function(error, user){
 			if(error || !user){
@@ -120,6 +125,8 @@ app.post('/user-breath/:username', function(req, res, next){
 			console.log('push worked');
 			res.send(breathresult);
 		})
+
+
 	});
 
 
@@ -129,12 +136,14 @@ app.post('/user-breath/:username', function(req, res, next){
 
 app.get('/get-breath/:username', function(req, res, next){
 
-	res.send('hey there!\n');
+	// res.send('hey there!\n');
 
-	// User.findOne({"username" : req.params.username}, function(err, user){
-	// 	console.log(user);
-	// 	console.log("Req from the get breath: ", res.body);
-	// })
+	User.findOne({"username" : req.params.username}, 'breaths', function(err, user){
+		if(err) return handleError(err);
+		console.log(user.breaths);
+		console.log("From moment: ", moment(user.breaths[user.breaths.length-1].created).format("ddd, MMM, D, YYYY"));
+		res.send(user.breaths[user.breaths.length-1]);
+	})
 });
 
 	//push into collection where username

@@ -127,11 +127,20 @@ function createBreathCycle(){
 		console.log('Totals: ', inTotal, exTotal, breathTotal);
 
 		breathCycle.created = moment().format();
-		breathCycle.inhaleAvg = (inTotal/breathArr.length)/1000;
-		breathCycle.exhaleAvg = (exTotal/breathArr.length)/1000;
-		breathCycle.breathTotalAvg = (breathTotal/breathArr.length)/1000;
+		breathCycle.inhaleAvg = ((inTotal/breathArr.length)/1000).toFixed(2);
+		breathCycle.exhaleAvg = ((exTotal/breathArr.length)/1000).toFixed(2);
+		breathCycle.breathTotalAvg = ((breathTotal/breathArr.length)/1000).toFixed(2);
 
-		return JSON.stringify(breathCycle);
+		//Send breathcycle to breath service
+		// breathSrvc.breathCycle = breathCycle;
+
+		breathCycle = JSON.stringify(breathCycle);
+
+		window.sessionStorage.breathCycle = breathCycle;
+
+		console.log(window.sessionStorage.breathCycle);
+
+		return breathCycle;
 
 
 }

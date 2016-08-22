@@ -1,13 +1,33 @@
 angular.module('medApp')
 	.controller('practiceCtrl', function($scope, $http, $state, $stateParams){
 
+$scope.avgInhale;
+$scope.avgExhale;
 
 	function init() {	
 			$http.get('http://localhost:3000/get-breath/' + $stateParams.username).then(function(response){
 
-				console.log(response.data);
+				 
+
+				$scope.avgBreath = response.data.breathTotalAvg;
+				$scope.avgInhale = response.data.inhaleAvg;
+				$scope.avgExhale = response.data.exhaleAvg;
+				$scope.date = moment(response.data.created).format("ddd,  MMM. D, YYYY");
+
+				recommendations($scope.avgInhale, $scope.avgExhale)
 				// $scope.avgBreath = response.data;
 			})
+		}
+
+
+		function recommendations(inhale, exhale){
+			if(inhale > exhale){
+					document.getElementById('recommendationContent').innerHTML = "In your last session, your inhales averaged longer than your exhales. Studies show this pattern can lead the body into fight or flight mode. Try inhaling for a count of four and exhaling for a count of eight to relax."
+
+			} else {
+				document.getElementById('recommendationContent').innerText = "Nice job! You have a great breath pattern. Now try slowing it down for deeper relaxation. Try inhaling for a count of five and exhaling for a count of five. (You can close your eyes if you want some extra zen.)"
+
+			}
 		}
 
 // if the user is logged in
@@ -17,9 +37,6 @@ angular.module('medApp')
 			}
 
 			$scope.session = "Last Session"
-
-
-	
 
 init()
 
@@ -31,10 +48,15 @@ init()
 
 			$scope.session = "Breath Stats"
 
-			// $scope.date = 
-			// $scope.avgInhale
-			// $scope.avgExhale
-			// $scope.avgBreath
+			var breathCycle = JSON.parse(window.sessionStorage.breathCycle);
+
+			$scope.date = moment(breathCycle.created).format("ddd,  MMM. D, YYYY");
+			$scope.avgInhale =  breathCycle.inhaleAvg;
+			$scope.avgExhale = breathCycle.exhaleAvg;
+			$scope.avgBreath = breathCycle.breathTotalAvg;
+			console.log($scope.date);
+
+			recommendations($scope.avgInhale, $scope.avgExhale);
 
 		}
 
