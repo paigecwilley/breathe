@@ -8,10 +8,26 @@
 <body>
 
 
+
+
 <div ui-view>
-	<a ui-sref="sign-up">Create an account</a>
-	<a ui-sref="breathe">Continue As Guest</a>
-	<a ui-sref="login">Log in</a>
+	<div id="navigation">
+	<img src="http://i.imgur.com/vKRaKDX.png"/>	
+	<h2>Breathe</h2>
+		<div id="homepage-nav-dropdown">
+		<h4>About</h4>
+		<h4>Sign In</h4>
+		</div>
+	</div>
+
+	<div id="welcome-div">
+		<h1>Welcome to Breathe</h1>
+		<div class="landing-page-buttons">
+		<a ui-sref="login" id="sign-in" class="landing-page-buttons">Sign In</a>
+		<a ui-sref="breathe" id="guest" class="landing-page-buttons">Continue As Guest</a>
+		</div>
+		<a ui-sref="sign-up" id="create-account">Create an account</a>
+	</div>
 </div>
 
 

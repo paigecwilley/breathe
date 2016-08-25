@@ -1,12 +1,148 @@
+/* Homepage */	
+
 body, html {
 	width: 100%;
 	height: 100%;
+	margin: 0;
+	padding: 0;
 }
 
+ui-view {
+	width:100%;
+	height:100%;
+	margin: 0 auto;
+	font-family: Avenir, "Avenir Next", "Helvetica Neue", "Segoe UI", Verdana, sans-serif;
+	display: block;
+}
+/*
 .breath-div {
 	width: 100vw;
 	height: 100vh;
 	padding:0;
 	margin: 0;
 	background-color: blue
+}*/
+
+.landing-page-button {
+
+}
+
+#navigation {
+	width:100vw;
+	height: 40px;
+	font-family: Avenir, "Avenir Next", "Helvetica Neue", "Segoe UI", Verdana, sans-serif;
+	background-color: #B1F1FF;
+}
+
+#navigation img {
+	  padding: 8px 0 0 18px;
+    height: 21px;
+}
+
+h2 {
+		margin: 0;
+    font-weight: 100;
+    font-size: 17px;
+    position: relative;
+    left: 67px;
+    top: -26px;
+}
+
+#welcome-div {
+	  width: 41.015625vw;
+    height: 31.7vh;
+    margin: 0 auto;
+    text-align: center;
+    display: block;
+    margin-top: 22%;
+    font-family: Avenir, "Avenir Next", "Helvetica Neue", "Segoe UI", Verdana, sans-serif;
+}
+
+h1 {
+	border-bottom: solid;
+	border-bottom-color: #B1F1FF;
+	font-family: Avenir, "Avenir Next", "Helvetica Neue", "Segoe UI", Verdana, sans-serif;
+	font-weight: 100;
+	/*(38(font in pixels)/1280)*100*/
+	font-size: 38px;
+}
+
+.landing-page-dropdown {
+	display:inline-block;
+}
+
+.landing-page-buttons {
+	  font-size: 18px;
+    color: black;
+    text-decoration: none;
+}
+
+#sign-in {
+	 	background-color: #5EC7A4;
+    padding: 21.5px 85px;
+    position: relative;
+    top: 62px;
+    right: 36px;
+    border-radius: 18px;
+}
+
+#guest {
+	  background-color: #B1F1FF;
+    position: relative;
+    left: 35px;
+    top: 62px;
+    padding: 22px 36px;
+    border-radius: 18px;
+}
+
+#create-account {
+	  position: relative;
+    top: 123px;
+    left: 2px;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+#homepage-nav-dropdown {
+	display:none;
+}
+
+.bubble {
+	border-radius: 50% ;
+	display: inline-block;
+	height: 29.6875vw;
+  width: 29.6875vw;
+  font-size:28px;
+}
+
+.inhale-bubble {
+    position: relative;
+    top: 153px;
+    left: 151px;
+    background-color: rgba(255,87, 79, .6);
+}
+
+.inhale-bubble p {
+	  position: relative;
+    top: 10.8vw;
+    left: 12vw;
+    /*font-size: 28px;*/
+    font-style: light;
+    font-weight: 100;
+}
+
+.exhale-bubble {
+	  height: 29.6875vw;
+    width: 29.6875vw;
+    position: relative;
+    left: 28.9vw;
+    top: 12vw;
+    background-color: rgba(177, 184, 255, .6);
+
+}
+
+.exhale-bubble p {
+	position: relative;
+    top: 10.8vw;
+    left: 11.5vw;
 }
