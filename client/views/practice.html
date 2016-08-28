@@ -1,12 +1,44 @@
-<h1>Practice</h1>
-<p>{{content.name}}<p>
 
-<h2>{{session}}</h2>
 
-<h3>{{date}}</h3>
 
-<p>Average Inhale: {{avgInhale}}</p>
-<p>Average Exhale: {{avgExhale}}</p>
-<p>Average Breath: {{avgBreath}}</p>
+<div>
 
-<p id="recommendationContent"></p>
+<div id="navigation">
+	<img src="http://i.imgur.com/vKRaKDX.png"/>	
+	<h2 id="nav-heading">Breathe</h2>
+		<div id="homepage-nav-dropdown">
+			<h4>About</h4>
+			<h4>Sign In</h4>
+		</div>
+</div>	
+
+	<div id="session-info">
+		<div id="session-info-header">
+				<h2>{{session}}</h2>
+		</div>
+				<h3>{{date}}</h3>
+		
+
+		<div id="session-stats">
+
+		<ul id="breath-label">
+			<li>Average Inhale:</li> 
+			<li>Average Exhale:</li>
+			<li>Average Breath:</li> 
+		</ul>
+		
+		<ul id="average-num">
+			<li>{{avgInhale}}</li>
+			<li>{{avgExhale}}</li>
+			<li>{{avgBreath}}</li>
+		</ul>	
+		</div>	
+	</div>
+
+	<div id="recommendation-info">
+		<h2 id="recommendation-header">Your Recommendation</h2>
+		<p id="recommendationContent"></p>
+	</div>
+
+
+</div>
