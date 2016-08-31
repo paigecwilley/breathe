@@ -24,9 +24,6 @@ ui-view {
 	background-color: blue
 }*/
 
-.landing-page-button {
-
-}
 
 #navigation {
 	width:100vw;
@@ -35,9 +32,24 @@ ui-view {
 	background-color: #B1F1FF;
 }
 
+#navigation h2 {
+		font-weight: 100;
+    font-size: 1em;
+    position: absolute;
+    top: -0.5vw;
+    left: 5.3vw;
+}
+
 #navigation img {
 	  padding: 8px 0 0 18px;
     height: 21px;
+    transition: transform 400ms ease;
+    transform-origin: 70% 50%; 
+    /*transform-origin: top right;*/
+}
+
+#navigation img:hover {
+	transform: rotate(90deg);
 }
 
 #nav-heading {
@@ -106,6 +118,13 @@ h1 {
 
 #homepage-nav-dropdown {
 	display:none;
+	width: 18.2vw;
+  height: 14vw;  
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  border-right: solid thin blue;
+  border-bottom: solid thin blue;
 }
 
 /* Breath Page */
@@ -267,7 +286,7 @@ h1 {
 
 /* Login Page */
 
-#sign-in-welcome {
+#login-welcome {
 	  width: 39.7vw;
     position: relative;
     top: 15.6vw;
@@ -328,3 +347,52 @@ a[ui-sref="sign-up"] {
 
 /* Sign-Up Page */
 
+#sign-up-welcome {
+	  width: 40vw;
+    position: relative;
+    top: 6vw;
+    left: 30vw;
+    text-align: center;
+    padding-bottom: 6px;
+}
+
+form[name="signUpForm"] input {
+	position: relative;
+	top: 11.9vw;
+	left: 30vw;
+	width:207px;
+	padding: 0;
+	padding-bottom: 1px;
+
+}
+
+form[name="signUpForm"] input[placeholder="username"] {
+	margin-right: 95px;
+}
+
+form[name="signUpForm"] input[placeholder="password"] {
+	  position: relative;
+    top: 19.8vw;
+    left: -10.2vw;
+    padding-bottom: 1px;
+}
+
+form[name="signUpForm"] input[placeholder="confirm password"] {
+	  position: relative;
+    top: 19.8vw;
+    left: -3.2vw;
+    padding-bottom: 1px;
+}
+
+#submit-button {
+	  position: relative;
+    left: -28vw;
+    top: 27.55vw;
+}
+
+#already-have-account {
+	  position: relative;
+    top: 28.7vw;
+    left: 43.7vw;
+    font-size: 0.85em;
+}

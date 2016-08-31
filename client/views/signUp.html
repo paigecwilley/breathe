@@ -1,11 +1,18 @@
-<h1>Sign up</h1>
+	
 
-<form name="signUpForm">Enter your information
-<input ng-model="user.username" type="text" placeholder="Username">
-<input ng-model="user.email" type="text" placeholder="Email">
-<input ng-model="user.password" type="text" placeholder="Password">
-<input ng-model="user.confirmPassword" type="text" placeholder="Confirm Password">
-<button ng-click="createUser()" type="submit">Sign Up</button>
+<div>
+<h1 id="sign-up-welcome">Welcome to Breathe</h1>
+</div>
 
-
+<div>
+<form name="signUpForm">
+<input ng-model="user.username" type="text" placeholder="username">
+<input ng-model="user.email" type="text" placeholder="email">
+<input ng-model="user.password" class="password-fields" type="text" placeholder="password">
+<input ng-model="user.confirmPassword" class="password-fields" type="text" placeholder="confirm password">
+<button ng-click="createUser()" id="submit-button" type="submit">Sign Up</button>
 </form>
+</div>
+
+<a ui-sref="login" id="already-have-account">I Already Have an Account</a>
+

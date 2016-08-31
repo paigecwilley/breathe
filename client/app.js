@@ -8,7 +8,7 @@ angular.module('medApp', ['ui.router']);
 			$stateProvider
 				.state('/', {
 					url: '/',
-					templateUrl: 'index.html'
+					templateUrl: 'views/home.html'
 				})
 				.state('login', {
 					url: '/login',
