@@ -1,7 +1,18 @@
-<h1>Login</h1>
+<div id="navigation">
+	<img src="http://i.imgur.com/vKRaKDX.png"/>	
+	<h2 id="nav-heading">Breathe</h2>
+		<div id="homepage-nav-dropdown">
+			<h4>About</h4>
+			<h4>Sign In</h4>
+		</div>
+</div>	
 
-<form name="loginForm">Login
-	<input ng-model="user.username" type="text" placeholder="Username">
-	<input ng-model="user.password" type="text" placeholder="Password">
-	<button type="Submit" ng-click="loginUser()">Login</button>
+<h1 id="sign-in-welcome">Welcome to Breathe</h1>
+
+<form name="loginForm">
+ <div class="login-fields">
+	<input ng-model="user.username" type="text" id="username" placeholder="username">
+	<input ng-model="user.password" type="text" id="password"placeholder="password">
+	</div>
+	<button type="Submit" ng-click="loginUser()">Log In</button>
 </form>
