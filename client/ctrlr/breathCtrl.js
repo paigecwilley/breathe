@@ -20,18 +20,25 @@ var intBreathArr = [];
 var breathArr = [];
 
 
-
+function animationState(state, id){
+  var bubble = document.getElementById(id);
+  bubble.classList[state]('animation');
+}
 
 //On keydown of space bar, initiate inhale 
 //Gets time inhale started
 
 window.addEventListener("keydown", (function(e){
+
+
 	
 if(e.key === " "){
 	if(intBreathArr.length <= 5){
 	var inhaleInitiation;
 	// console.log('keydown listener');
 	
+	animationState('add', 'inhale-bubble');
+	animationState('remove', 'exhale-bubble');
 
 		
 		inhaleInitiation = Date.now();
@@ -39,6 +46,7 @@ if(e.key === " "){
 
 		// console.log('inhale initiation: ', inhaleInitiation);
 		// console.log('inhale secs array ', inhaleSecs );
+
 	}
 }
 
@@ -58,6 +66,10 @@ window.addEventListener("keyup", (function(e){
 	
 	
 	if(intBreathArr.length <= 5){
+
+		animationState('remove', 'inhale-bubble');
+		animationState('add', 'exhale-bubble');
+
 		exhaleInitiation = Date.now();
 		// console.log(exhaleInitiation);
 		// console.log('Inside the keyup')

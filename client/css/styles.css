@@ -117,14 +117,35 @@ h1 {
 }
 
 #homepage-nav-dropdown {
-	display:none;
+	display:block;
+	height:0;
+	visibility: hidden;
+	transition: height 0.4s;
+}
+
+#navigation img:hover ~ #homepage-nav-dropdown, #homepage-nav-dropdown:hover {
+	visibility: visible;
 	width: 18.2vw;
-  height: 14vw;  
+  height: 13.6vw;  
   margin: 0;
   padding: 0;
   list-style-type: none;
-  border-right: solid thin blue;
-  border-bottom: solid thin blue;
+  border-right: solid rgba(177, 241, 255, .6);
+  border-bottom: solid rgba(177, 241, 255, .6);
+  position: absolute;
+  top: 40px;
+}
+
+#homepage-nav-dropdown li {
+	  width: 60px;
+    font-size: 1.2em;
+    padding-bottom: 0.7vw;
+    margin-bottom: 2.5vw;
+    border-bottom: solid rgba(177, 241, 255, .6);
+    position: relative;
+    top: 2.6vw;
+    left: 6.6vw;
+    text-align: left;
 }
 
 /* Breath Page */
@@ -137,14 +158,14 @@ h1 {
   font-size:28px;
 }
 
-.inhale-bubble {
+#inhale-bubble {
     position: relative;
     top: 153px;
     left: 151px;
     background-color: rgba(255,87, 79, .6);
 }
 
-.inhale-bubble p {
+#inhale-bubble p {
 	  position: relative;
     top: 10.8vw;
     left: 12vw;
@@ -153,7 +174,7 @@ h1 {
     font-weight: 100;
 }
 
-.exhale-bubble {
+#exhale-bubble {
 	  height: 29.6875vw;
     width: 29.6875vw;
     position: relative;
@@ -163,12 +184,33 @@ h1 {
 
 }
 
-.exhale-bubble p {
+#exhale-bubble p {
 	position: relative;
     top: 10.8vw;
     left: 11.5vw;
 }
 
+
+
+.animation {
+	-webkit-animation-name: stretch;
+	-webkit-animation-duration: 3s;
+	-webkit-animation-timing-function: ease-out;
+	-webkit-animation-delay: 0;
+	-webkit-animation-direction: normal;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-fill-mode: none;
+  -webkit-animation-play-state: running;
+}
+
+@-webkit-keyframes stretch {
+  0% {
+    transform: scale(.3);
+  }
+  100% {
+    transform: scale(1.5);
+  }
+}
 
 /*Practice Page */
 
