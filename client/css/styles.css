@@ -148,7 +148,23 @@ h1 {
     text-align: left;
 }
 
-/* Breath Page */
+/*//////////////
+//Breathe Page//
+/////////////*/
+
+.breath-div {
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+}
+
+.breath-div a {
+	  text-decoration: none;
+    float: left;  /*Like position absolute, but everything pulls to given direction*/
+    clear: both; /* Allows no neighbors right or left, but still floats*/
+    margin-left: 42.6953125vw;
+    font-size: 1.25vw;
+}
 
 .bubble {
 	border-radius: 50% ;
@@ -156,21 +172,33 @@ h1 {
 	height: 29.6875vw;
   width: 29.6875vw;
   font-size:28px;
+  float: left;
+  margin-left: 13.541666vw;
+  margin-top: 13.5%;
+  text-align: center;
 }
 
 #inhale-bubble {
     position: relative;
-    top: 153px;
-    left: 151px;
     background-color: rgba(255,87, 79, .6);
 }
 
+#inhale-bubble:after {
+	content: "Hold space on Inhale";
+	display: block;
+  position: absolute;
+  top: -20%;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
 #inhale-bubble p {
-	  position: relative;
-    top: 10.8vw;
-    left: 12vw;
+	  position: absolute;
+	  top: 35%;
+	  left: 0;
+	  right: 0;
     /*font-size: 28px;*/
-    font-style: light;
     font-weight: 100;
 }
 
@@ -178,16 +206,43 @@ h1 {
 	  height: 29.6875vw;
     width: 29.6875vw;
     position: relative;
-    left: 28.9vw;
-    top: 12vw;
     background-color: rgba(177, 184, 255, .6);
 
 }
 
+#exhale-bubble:after {
+	content: "Release space on Exhale";
+	display: block;
+  position: absolute;
+  top: -20%;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
 #exhale-bubble p {
-	position: relative;
-    top: 10.8vw;
-    left: 11.5vw;
+	position: absolute;
+    top: 35%;
+    left: 0;
+    right: 0;
+}
+
+#combined-bubble {
+	display:none;
+	background-color: rgba(204, 153, 153, .6);
+	text-align: center;
+  position: relative;
+  top: 3.1vw;
+  left: 35.2vw;
+}
+
+#combined-bubble p {
+	  position: absolute;
+    top: 60%;
+    left: 33.5%;
+    height: 80%;
+    width: 82%;
+    margin: -15% 0 0 -25%
 }
 
 
@@ -212,7 +267,9 @@ h1 {
   }
 }
 
-/*Practice Page */
+/*//////////////
+/Practice Page/
+/////////////*/
 
 #session-info {
 	background-color: whitesmoke;
@@ -325,8 +382,9 @@ h1 {
 	background-color:rgba(94, 199, 164, .6);
 }
 
-
-/* Login Page */
+/*//////////////
+// Login Page //
+/////////////*/
 
 #login-welcome {
 	  width: 39.7vw;
@@ -342,8 +400,9 @@ h1 {
     padding-bottom: 0.5vw;
 }
 
+/* Used below to help style password fields that have type "password"*/
 
-input[type="text"] {
+input[type="text"], input[type="password"] {
 	  border: none;
     padding: 10px;
     padding-bottom: 2px;
@@ -357,6 +416,7 @@ input[type="text"] {
     top: 21vw;
     left: 30.5vw;
 }
+
 
 #username {
 	 margin-right: 7.2vw;
