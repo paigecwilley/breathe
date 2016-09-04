@@ -1,6 +1,7 @@
 /* Homepage */	
 
 body, html {
+	position: absolute;
 	width: 100%;
 	height: 100%;
 	margin: 0;
@@ -8,13 +9,15 @@ body, html {
 	font-family: Avenir, "Avenir Next", "Helvetica Neue", "Segoe UI", Verdana, sans-serif;
 }
 
-ui-view {
-	width:100%;
-	height:100%;
+.body-view {
+	position: absolute;
+	width:100vw;
+	height:100vw;
 	margin: 0 auto;
-	font-family: Avenir, "Avenir Next", "Helvetica Neue", "Segoe UI", Verdana, sans-serif;
+	/*font-family: Avenir, "Avenir Next", "Helvetica Neue", "Segoe UI", Verdana, sans-serif;*/
 	display: block;
 }
+
 /*
 .breath-div {
 	width: 100vw;
@@ -52,68 +55,76 @@ ui-view {
 	transform: rotate(90deg);
 }
 
-#nav-heading {
+/*#nav-heading {
 		margin: 0;
     font-weight: 100;
     font-size: 17px;
     position: relative;
     left: 67px;
     top: -26px;
-}
+}*/
 
 #welcome-div {
-	  width: 41.015625vw;
-    height: 31.7vh;
+	  width: 50%;
+    height: auto;
     margin: 0 auto;
+    margin-top: 16%;
     text-align: center;
     display: block;
-    margin-top: 22%;
     font-family: Avenir, "Avenir Next", "Helvetica Neue", "Segoe UI", Verdana, sans-serif;
 }
 
-h1 {
+#welcome-div h1 {
 	border-bottom: solid;
 	border-bottom-color: #B1F1FF;
+	padding-bottom: 0.5%;
 	font-family: Avenir, "Avenir Next", "Helvetica Neue", "Segoe UI", Verdana, sans-serif;
 	font-weight: 100;
 	/*(38(font in pixels)/1280)*100*/
 	font-size: 38px;
+	width:80%;
+	margin: 0 auto;
 }
 
 .landing-page-dropdown {
 	display:inline-block;
 }
 
-.landing-page-buttons {
+.landing-page-buttons a button {
 	  font-size: 18px;
-    color: black;
+    color: gray;
     text-decoration: none;
+    width: 225px;
+    height: 70px;
+    margin-top: 5.6%;
+    border: none;
+    border-radius: 18px;
 }
 
 #sign-in {
 	 	background-color: #5EC7A4;
-    padding: 21.5px 85px;
+	 	margin-right: 5.4%;
+   /* padding: 21.5px 85px;
     position: relative;
     top: 62px;
     right: 36px;
-    border-radius: 18px;
+    border-radius: 18px;*/
 }
 
 #guest {
 	  background-color: #B1F1FF;
-    position: relative;
+   /* position: relative;
     left: 35px;
     top: 62px;
     padding: 22px 36px;
-    border-radius: 18px;
+    border-radius: 18px;*/
 }
 
 #create-account {
-	  position: relative;
-    top: 123px;
-    left: 2px;
+	  margin-top: 7.1%;
     font-size: 14px;
-    text-decoration: none;
+    color: gray;
+  	font-size: 13.4px;
 }
 
 #homepage-nav-dropdown {
@@ -441,9 +452,6 @@ button[type="submit"] {
 
 a[ui-sref="sign-up"] {
 	color: gray;
-	position: relative;
-  top: 27.1vw;
-  left: 45.7vw;
   font-size: 13.4px;
 }
 
