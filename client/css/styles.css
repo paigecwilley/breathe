@@ -74,7 +74,7 @@ body, html {
     font-family: Avenir, "Avenir Next", "Helvetica Neue", "Segoe UI", Verdana, sans-serif;
 }
 
-#welcome-div h1 {
+#welcome-div h1, #sign-up-welcome {
 	border-bottom: solid;
 	border-bottom-color: #B1F1FF;
 	padding-bottom: 0.5%;
@@ -120,7 +120,7 @@ body, html {
     border-radius: 18px;*/
 }
 
-#create-account {
+.create-account {
 	  margin-top: 7.1%;
     font-size: 14px;
     color: gray;
@@ -397,50 +397,64 @@ body, html {
 // Login Page //
 /////////////*/
 
+#login-div {
+	width: 50%;
+	margin: 0 auto;
+	text-align: center;
+
+}
+
 #login-welcome {
-	  width: 39.7vw;
-    position: relative;
-    top: 15.6vw;
-    left: 30.3vw;
+		width:80%;
+		margin: 0 auto;
     font-weight: 100;
     font-size: 40px;
-    margin: 0;
+    margin-top: 31%;
     text-align: center;
+    border-bottom: solid;
     border-bottom-color: rgba(94, 199, 164, .6);
     border-bottom-width: thin;
     padding-bottom: 0.5vw;
 }
 
-/* Used below to help style password fields that have type "password"*/
 
-input[type="text"], input[type="password"] {
-	  border: none;
-    padding: 10px;
-    padding-bottom: 2px;
+#login-form {
+	width: 80%;
+	margin: 0 auto;
+}
+
+.login-fields-block {
+	height: auto;
+	width: auto;
+	overflow: auto;
+}
+
+.login-fields {
+
+	margin-top: 15%;
+	width: 40%;
+	font-size: 25px;
+	text-align: center;
+	border: none;
+  padding-bottom: 1%;
     border-bottom: solid thin rgba(94, 199, 164, .6);
     font-family: Avenir, "Avenir Next", "Helvetica Neue", "Segoe UI", Verdana, sans-serif;
     font-weight: 100;
-    font-size: 25px;
-    text-align: center;
-    width: 14.3vw;
-   	position: relative;
-    top: 21vw;
-    left: 30.5vw;
 }
 
+.login-fields:first-child {
+	float: left;
 
-#username {
-	 margin-right: 7.2vw;
-    
+}
+
+.login-fields:last-child {
+	float: right;
 }
 
 button[type="submit"] {
 	  width: 8.8vw;
     height: 3vw;
     border-radius: 0.7vw;
-    position: relative;
-    top: 26vw;
-    left: 45.8vw;
     background-color: rgba(94, 199, 164, .6);
     border: none;
     font-family: Avenir, "Avenir Next", "Helvetica Neue", "Segoe UI", Verdana, sans-serif;
@@ -448,22 +462,21 @@ button[type="submit"] {
     font-weight: 100;
     color: gray;
     text-align: center;
+    margin-top: 10%;
 }
 
-a[ui-sref="sign-up"] {
+.create-account-login {
 	color: gray;
   font-size: 13.4px;
+  margin-top: 2.4%;
 }
 
 /* Sign-Up Page */
 
 #sign-up-welcome {
-	  width: 40vw;
-    position: relative;
-    top: 6vw;
-    left: 30vw;
-    text-align: center;
-    padding-bottom: 6px;
+	 text-align: center;
+	 margin-top: 7.9%;
+	 
 }
 
 form[name="signUpForm"] input {
