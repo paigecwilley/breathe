@@ -36,25 +36,26 @@ UserSchema.pre('save', function(next){
 });
 
 UserSchema.statics.authenticate = function(username, password, cb){
-	User.findOne(({username: username}))
-		.exec(function(error, user){
-			if(error){
-				return cb(error);
-			} else if (!user) {
-				var err = new Error('User not found.');
-				err.status = 401;
-				return cb(err);
-			}
+	User.findOne({username: username})
+	.exec(function(error, user){
+		if(error){
+			return cb(error);
+		} else if (!user) {
+			var err = new Error('User not found.');
+			err.status = 401;
+			return cb(err);
+		}
+		else {
 			bcrypt.compare(password, user.password, function(
 				error, result){
 				if(result === true){
 					return cb(null, user);
 				} else{
-					return cb;
+					return cb('incorrect password');
 				}
-			})
-
-		})
+			});
+		}
+	})
 }
 
 

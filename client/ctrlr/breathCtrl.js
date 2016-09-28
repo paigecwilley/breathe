@@ -1,5 +1,5 @@
 angular.module('medApp')
-.controller('breathCtrl', function($scope, $http, $state, $stateParams){
+.controller('breathCtrl', function($scope, $http, $state, $stateParams, userService){
 
 
 
@@ -173,8 +173,8 @@ function createBreathCycle(){
 	function sendData(data){
 		console.log('Data from breathCtrl: ', data);
 		console.log('State params: ', $stateParams.username);
-		if($stateParams.username){
-			$http.post('http://localhost:3000/user-breath/' + $stateParams.username, data)
+		if(userService.user.username){
+			$http.post('http://localhost:3000/user-breath/' + userService.user.username, data)
 			// .then(function(){
 			// 	$state.go('practice', {username:  $stateParams.username});
 			// })

@@ -2,7 +2,7 @@
 
 body, html {
 	position: absolute;
-	overflow: hidden;
+	/*overflow: hidden;*/
 	width: 100%;
 	height: 100%;
 	margin: 0;
@@ -13,7 +13,7 @@ body, html {
 .body-view {
 	position: absolute;
 	width:100vw;
-	height:100vw;
+	height:100vh;
 	margin: 0 auto;
 	/*font-family: Avenir, "Avenir Next", "Helvetica Neue", "Segoe UI", Verdana, sans-serif;*/
 	display: block;
@@ -183,64 +183,49 @@ body, html {
 	display: inline-block;
 	height: 29.6875vw;
   width: 29.6875vw;
-  font-size:28px;
+  font-size:2.1875vw;
   float: left;
-  margin-left: 13.541666vw;
-  margin-top: 13.5%;
+  margin-left: 11.541666vw;
+  margin-top: 0.5%;
   text-align: center;
+  color: gray;
+  font-weight:100;
 }
+
+.instructions {
+	font-size: 1.4vw;
+	margin-top: 8%;
+}
+
+.instructions p {
+	display: inline-block;
+	margin-left: 19.8%;
+	margin-right: 12.1%;
+}
+
+
 
 #inhale-bubble {
     background-color: rgba(255,87, 79, .6);
 }
 
-/*#inhale-bubble:after {
-	content: "Hold space on Inhale";
-	display: block;
-  position: absolute;
-  top: -20%;
-  left: 0;
-  right: 0;
-  text-align: center;*/
-}
 
 #inhale-bubble p {
-	  position: absolute;
-	  top: 35%;
-	  left: 0;
-	  right: 0;
     /*font-size: 28px;*/
     font-weight: 100;
 }
 
 #exhale-bubble {
+	margin-left: 17.5%;
 	  height: 29.6875vw;
     width: 29.6875vw;
     background-color: rgba(177, 184, 255, .6);
 
 }
 
-/*#exhale-bubble:after {
-	content: "Release space on Exhale";
-	display: block;
-  position: absolute;
-  top: -20%;
-  left: 0;
-  right: 0;
-  text-align: center;
-}*/
 
-#exhale-bubble p {
-	position: absolute;
-    top: 35%;
-    left: 0;
-    right: 0;
-}
-
-.instructions {
-	display: inline-block;
-	font-size: 22px;
-
+.label {
+	margin-top: 45%;
 }
 
 .remove-display {
@@ -290,7 +275,7 @@ body, html {
     transform: scale(1.15);
   }
   100% {
-    transform: translate(100%, 0);
+    transform: translate(79%, 0);
     background: rgba(204, 153, 153, .6);
   }
 }
@@ -303,7 +288,7 @@ body, html {
     transform: scale(1.15);
   }
   100% {
-    transform: translate(-101%, 0);
+    transform: translate(-80%, 0);
     background: rgba(204, 153, 153, .6); 
   }
 }
@@ -533,15 +518,79 @@ form[name="signUpForm"] {
 	float: left;
 }
 
-#submit-button {
+/*#submit-button {
 	  position: relative;
     left: -28vw;
     top: 27.55vw;
-}
+}*/
 
 #already-have-account {
 	  position: relative;
     top: 28.7vw;
     left: 43.7vw;
     font-size: 0.85em;
+}
+
+
+@media all and (max-width: 960px) {
+	#sign-in {
+		margin-right: 0;
+	}
+	#exhale-bubble {
+		clear: both;
+	}
+
+	.bubble {
+		margin-left: calc((100vw - 300px) / 2) !important;
+		margin-bottom: 2%;
+		min-height: 300px;
+		min-width: 300px;
+		font-size: 14px;
+	}
+
+	.instructions {
+		font-size: 14px;
+		text-align: center;
+	}
+
+	.instructions p {
+		margin: 0;
+		display: block;
+	}
+
+	@-webkit-keyframes stretch {
+  0% {
+    transform: scale(.9);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes moveinhale {
+  0% {
+    transform: translate(0, 0) scale(1);    
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: translate(0, 50%);
+    background: rgba(204, 153, 153, .6);
+  }
+}
+
+@keyframes moveexhale {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: translate(-0, -58%);
+    background: rgba(204, 153, 153, .6); 
+  }
+}
+
 }

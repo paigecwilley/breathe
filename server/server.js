@@ -39,7 +39,6 @@ app.use(session({
 //Create user at signup
 
 app.post('/create-user', function(req, res, next){
-	console.log(req.body);
 	if(req.body.username &&
 		req.body.email &&
 		req.body.password &&
@@ -47,7 +46,10 @@ app.post('/create-user', function(req, res, next){
 
 		if(req.body.password != req.body.confirmPassword){
 			var err = new Error('Passwords do not match');
-			err.status = 400;
+			//return a response with appropriate status and an object with a message
+			res.status(400).send({
+				message: 'passwords do not match'
+			});
 			return next(err);
 		};
 
@@ -60,6 +62,10 @@ app.post('/create-user', function(req, res, next){
 
 		User.create(userData, function(error, user){
 			if(error){
+				res.status(400).send({
+					message: 'Failed to create user',
+					error: error
+				})
 				return next(error);
 			} else {
 				console.log('Create worked');
@@ -69,6 +75,9 @@ app.post('/create-user', function(req, res, next){
 	} else {
 		var err = new Error('All fields requried');
 		err.status = 400;
+		res.status(400).send({
+			message: 'Please fill out all fields'
+		})
 		return next(err);
 	}
 });
@@ -77,24 +86,35 @@ app.post('/create-user', function(req, res, next){
 
 app.post('/login', function(req, res, next){
 	console.log(req.body);
-	if ('OPTIONS = req.method') {
-		return res.send(200);
+	if (req.method == 'OPTIONS') {
+		return res.status(200).send('OK');
 	}
-	if(req.body.username && req.body.password){
+	else if(req.body.username && req.body.password){
 		User.authenticate(req.body.username, req.body.password, function(error, user){
 			if(error || !user){
-				var err = new Error('Wrong email or password');
+				var err = new Error('Wrong username or password');
 				err.status = 401;
 				console.log(err);
+				res.status(401).send({
+					message: "Wrong username or password"
+				})
 				return next(err);
 			} else {
 				req.session.userId = user._id;
-				return res.send(user.username);
+				//create a new object directly in the send and sanitize the properties you want to send--prevents sending hashed password
+				return res.send({
+					userId: user._id,
+					email: user.email,
+					username: user.username
+				});
 			}
 		});
 	} else {
 		var err = new Error('Username and password are required.');
 		err.status = 401;
+		res.status(401).send({
+			message: "Username and password are required.");
+		})
 		return next(err);
 	}
 });
