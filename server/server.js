@@ -102,18 +102,19 @@ app.post('/login', function(req, res, next){
 			} else {
 				req.session.userId = user._id;
 				//create a new object directly in the send and sanitize the properties you want to send--prevents sending hashed password
-				return res.send({
+				 res.send({
 					userId: user._id,
 					email: user.email,
 					username: user.username
 				});
+			return next();
 			}
 		});
 	} else {
 		var err = new Error('Username and password are required.');
 		err.status = 401;
 		res.status(401).send({
-			message: "Username and password are required.");
+			message: "Username and password are required."
 		})
 		return next(err);
 	}

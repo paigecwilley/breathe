@@ -9,15 +9,7 @@ var BreathSchema = new mongoose.Schema({
 	exhaleAvg: Number, 
 	breathTotalAvg: Number
 });
-// var BreathSchema = new mongoose.Schema();
 
-// BreathSchema.add({
-// 	created: Date,
-// 	inhaleAvg: Number, 
-// 	exhaleAvg: Number, 
-// 	breathTotalAvg: Number
-
-// })
 
 
 

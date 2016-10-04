@@ -1,10 +1,17 @@
 angular.module('medApp')
-.controller('breathCtrl', function($scope, $http, $state, $stateParams, userService){
+.controller('breathCtrl', function($scope, $http, $state, $stateParams, userService, $timeout){
 
 
+$scope.animationComplete = false;
 
+$scope.recommendation = "Here is the recommendation scope";
+$scope.inhaleInstructions = "Hold Space on Inhale";
+$scope.exhaleInstructions = "Release Space on Exhale";
 
-
+//If user is a guest, don't allow to skip to recommendations
+if(!userService.user.username) {
+	$scope.recommendation = "";
+}
 
 	var inhaleInterval = 0;
 	inhaleSecs = [];
@@ -33,9 +40,10 @@ function endAnimation(){
 	inhaleCircle.classList.add('inhale-class');
 	exhaleCircle.classList.add('exhale-class');
 	labels.forEach(function(v){
-			v.classList.add('remove-display');
+		v.classList.add('remove-display');
 	})
-	
+	$scope.animationComplete = true;
+	console.log("This is the scope", $scope.recommendation)
 
 }
 
@@ -105,6 +113,7 @@ window.addEventListener("keyup", (function(e){
 	if(intBreathArr.length === 6){
 		createBreathObjArr();
 		endAnimation();
+		$timeout(function(){$scope.recommendation="Go to recommendation"}, 0);
 		sendData(createBreathCycle());
 	}
 

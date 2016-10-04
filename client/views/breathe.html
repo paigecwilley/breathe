@@ -3,24 +3,19 @@
 
 
 		<div class="instructions">
-					<p>Hold Space on Inhale</p>
-					<p id="exhale-instructions">Release Space on Exhale</p>
+					<p>{{inhaleInstructions}}</p>
+					<p id="exhale-instructions">{{exhaleInstructions}}</p>
 		</div>
 		<div class="bubble" id="inhale-bubble"><p class="label"> Inhale</p></div>
 		<div class="bubble" id="exhale-bubble"><p class="label"> Exhale</p></div>
 
-		<a ui-sref="practice">Skip to Recommendations</a>
 	
 
 
-
-
-
-
-
-
-
-
+	<div class="recommendation">
+		<a ui-sref="practice" id="recommendation-link">{{recommendation}}</a>
+	</div>	
+	
 
 
 

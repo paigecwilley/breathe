@@ -13,12 +13,14 @@ angular.module('medApp')
 
 		$scope.loginUser = function(){
 			console.log('From the login user: ', $scope.user);
-			$http.post('http://localhost:3000/login', $scope.user).then(function(response){
-				if(response.data) {
-					userService.user = response.data;
+			$http.post('http://localhost:3000/login', $scope.user).then(function(successResponse){
+				if(successResponse.data) {
+					userService.user = successResponse.data;
 					$state.go('breathe', {username: userService.user.username});
 				}
-			});
+			}, function(failedResponse){
+					$scope.failedResponse = failedResponse.data.message;
+				});
 			
 		}
 

@@ -1,4 +1,4 @@
-angular.module('medApp', ['ui.router']);
+angular.module('medApp', ['ui.router',]);
 	angular.module('medApp')
 	.config(function($stateProvider, $urlRouterProvider, $locationProvider){
 
