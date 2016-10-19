@@ -32,6 +32,17 @@ var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'))
 
+app.use(function(req, res, next){
+	if (req.method === "OPTIONS") {
+		var statusCode = 200;		
+		res.writeHead(statusCode, responseHeaders);
+		res.end();
+	}
+	else {
+		next();
+	}
+})
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cors());
@@ -47,14 +58,7 @@ app.use(session({
 //Create user at signup
 
 app.post('/create-user', function(req, res, next){
-	if (req.method === "OPTIONS") {
-		console.log('here!');
-		var statusCode = 200;		
-    res.writeHead(statusCode, responseHeaders);
-    res.end();
-    return;
-  }
-	else if(req.body.username &&
+	if(req.body.username &&
 		req.body.email &&
 		req.body.password &&
 		req.body.confirmPassword) {
@@ -100,13 +104,7 @@ app.post('/create-user', function(req, res, next){
 //Login user
 
 app.post('/login', function(req, res, next){
-	if (req.method === "OPTIONS") {
-		var statusCode = 200;		
-		res.writeHead(statusCode, responseHeaders);
-		res.end();
-		return;
-	}
-	else if(req.body.username && req.body.password){
+	if(req.body.username && req.body.password){
 		User.authenticate(req.body.username, req.body.password, function(error, user){
 			if(error || !user){
 				var err = new Error('Wrong username or password');
@@ -140,13 +138,7 @@ app.post('/login', function(req, res, next){
 //Create user breath
 
 app.post('/user-breath/:username', function(req, res, next){
-	if (req.method === "OPTIONS") {
-		var statusCode = 200;		
-		res.writeHead(statusCode, responseHeaders);
-		res.end();
-		return;
-	}
-	// console.log('Req body: ', req.body);
+		// console.log('Req body: ', req.body);
 	// console.log('Req.params: ', req.params.username);
 
 	var breathData = {
