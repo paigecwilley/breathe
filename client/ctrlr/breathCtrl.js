@@ -14,7 +14,7 @@ if(!userService.user.username) {
 }
 
 	var inhaleInterval = 0;
-	inhaleSecs = [];
+	var inhaleSecs = [];
 	var exhaleExists = false;
 	var inhaleBegin;
 	var exhaleInitiation;
@@ -64,6 +64,9 @@ window.addEventListener("keydown", (function(e){
 
 
 	inhaleInitiation = Date.now();
+	console.log('\n');
+	console.log('inhaleInitiation: ', inhaleInitiation);
+	console.log('\n');
 	inhaleSecs.push(inhaleInitiation);
 
 		// console.log('inhale initiation: ', inhaleInitiation);
@@ -150,7 +153,7 @@ var inTotal = 0;
 var exTotal = 0;
 var breathTotal = 0;
 
-function createBreathCycle(){
+function createBreathCycle(){	
 	var breathCycle = {};
 
 	console.log('From the breath cycle');
@@ -171,6 +174,9 @@ function createBreathCycle(){
 		// breathSrvc.breathCycle = breathCycle;
 
 		breathCycle = JSON.stringify(breathCycle);
+		console.log('\n');
+		console.log('breathCycle: ', breathCycle);
+		console.log('\n');
 
 		window.sessionStorage.breathCycle = breathCycle;
 
@@ -193,10 +199,6 @@ function createBreathCycle(){
 		// }
 		
 	} 
-
-
-
-
 
 
 

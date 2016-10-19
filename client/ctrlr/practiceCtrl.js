@@ -5,6 +5,7 @@ $scope.avgInhale;
 $scope.avgExhale;
 
 	function init() {	
+		console.log('INIT');
 			$http.get('http://localhost:3000/get-breath/' + $stateParams.username).then(function(response){
 
 				 
@@ -38,7 +39,7 @@ $scope.avgExhale;
 
 			$scope.session = "Last Session"
 
-init()
+			init()
 
 //If the user is a guest
 		} else {
@@ -49,6 +50,7 @@ init()
 			$scope.session = "Breath Stats"
 
 			var breathCycle = JSON.parse(window.sessionStorage.breathCycle);
+
 
 			$scope.date = moment(breathCycle.created).format("ddd,  MMM. D, YYYY");
 			$scope.avgInhale =  breathCycle.inhaleAvg;
