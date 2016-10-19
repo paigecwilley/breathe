@@ -172,6 +172,10 @@ app.get('/get-breath/:username', function(req, res, next){
 	})
 });
 
+app.get('/test', function(req, res){
+	res.send("hello!");
+});
+
 	//push into collection where username
 	// db.users.update(
 	// 	{username: req.params.username },
