@@ -189,7 +189,7 @@ function createBreathCycle(){
 		console.log('Data from breathCtrl: ', data);
 		console.log('State params: ', $stateParams.username);
 		if(userService.user.username){
-			$http.post('http://localhost:3000/user-breath/' + userService.user.username, data)
+			$http.post('https://localhost:3000/user-breath/' + userService.user.username, data)
 			// .then(function(){
 			// 	$state.go('practice', {username:  $stateParams.username});
 			// })
