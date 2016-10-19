@@ -33,6 +33,8 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'))
 
 app.use(function(req, res, next){
+	console.log('hello');
+	console.log(req.method);	
 	if (req.method === "OPTIONS") {
 		var statusCode = 200;		
 		res.writeHead(statusCode, responseHeaders);
