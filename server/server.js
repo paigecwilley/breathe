@@ -19,6 +19,14 @@ var BreathSchema = require('./models/breath');
 
 var mongoose = require('mongoose');
 
+var responseHeaders = {  
+    "access-control-allow-origin": "*",
+    "access-control-allow-methods": "GET, POST, PUT, DELETE, OPTIONS",
+    "access-control-allow-headers": "content-type, accept",
+    "access-control-max-age": 10,
+    "Content-Type": "application/json"
+};
+
 mongoose.connect('mongodb://localhost:27017/med-app');
 var db = mongoose.connection;
 
@@ -39,10 +47,13 @@ app.use(session({
 //Create user at signup
 
 app.post('/create-user', function(req, res, next){
-	if (req.method == 'OPTIONS') {
-		return res.status(200).send('OK');
-	}
-	if(req.body.username &&
+	if (req.method === "OPTIONS") {
+		var statusCode = 200;		
+    res.writeHead(statusCode, responseHeaders);
+    res.end();
+    return;
+  }
+	else if(req.body.username &&
 		req.body.email &&
 		req.body.password &&
 		req.body.confirmPassword) {
@@ -88,8 +99,11 @@ app.post('/create-user', function(req, res, next){
 //Login user
 
 app.post('/login', function(req, res, next){
-	if (req.method == 'OPTIONS') {
-		return res.status(200).send('OK');
+	if (req.method === "OPTIONS") {
+		var statusCode = 200;		
+		res.writeHead(statusCode, responseHeaders);
+		res.end();
+		return;
 	}
 	else if(req.body.username && req.body.password){
 		User.authenticate(req.body.username, req.body.password, function(error, user){
@@ -125,8 +139,11 @@ app.post('/login', function(req, res, next){
 //Create user breath
 
 app.post('/user-breath/:username', function(req, res, next){
-	if (req.method == 'OPTIONS') {
-		return res.status(200).send('OK');
+	if (req.method === "OPTIONS") {
+		var statusCode = 200;		
+		res.writeHead(statusCode, responseHeaders);
+		res.end();
+		return;
 	}
 	// console.log('Req body: ', req.body);
 	// console.log('Req.params: ', req.params.username);
