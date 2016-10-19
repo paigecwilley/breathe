@@ -39,6 +39,9 @@ app.use(session({
 //Create user at signup
 
 app.post('/create-user', function(req, res, next){
+	if (req.method == 'OPTIONS') {
+		return res.status(200).send('OK');
+	}
 	if(req.body.username &&
 		req.body.email &&
 		req.body.password &&
@@ -85,7 +88,6 @@ app.post('/create-user', function(req, res, next){
 //Login user
 
 app.post('/login', function(req, res, next){
-	console.log(req.body);
 	if (req.method == 'OPTIONS') {
 		return res.status(200).send('OK');
 	}
@@ -123,6 +125,9 @@ app.post('/login', function(req, res, next){
 //Create user breath
 
 app.post('/user-breath/:username', function(req, res, next){
+	if (req.method == 'OPTIONS') {
+		return res.status(200).send('OK');
+	}
 	// console.log('Req body: ', req.body);
 	// console.log('Req.params: ', req.params.username);
 
