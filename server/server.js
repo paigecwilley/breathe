@@ -48,6 +48,7 @@ app.use(session({
 
 app.post('/create-user', function(req, res, next){
 	if (req.method === "OPTIONS") {
+		console.log('here!');
 		var statusCode = 200;		
     res.writeHead(statusCode, responseHeaders);
     res.end();
