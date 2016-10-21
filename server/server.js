@@ -186,20 +186,7 @@ app.get('/test', function(req, res){
 	res.send("hello!");
 });
 
-	//push into collection where username
-	// db.users.update(
-	// 	{username: req.params.username },
-	// 	{$push: {breaths: breathData}}
-	// )
-
-
-	// User.create(breathData, function(error, user){
-	// 	if(error){
-	// 		return next(error);
-	// 	} else {
-	// 		console.log('You added a breath to a user!')
-	// 	}
-	// });
+	
 
 
 
