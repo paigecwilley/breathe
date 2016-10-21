@@ -4,7 +4,7 @@ angular.module('medApp')
 
 $scope.animationComplete = false;
 
-$scope.recommendation = "Here is the recommendation scope";
+$scope.recommendation = "Skip to recommendations";
 $scope.inhaleInstructions = "Hold Space on Inhale";
 $scope.exhaleInstructions = "Release Space on Exhale";
 
@@ -36,14 +36,13 @@ function endAnimation(){
 	var inhaleCircle = document.getElementById('inhale-bubble');
 	var exhaleCircle = document.getElementById('exhale-bubble');
 	var labels = document.querySelectorAll('.label');
-	console.log("labels: ", labels);
 	inhaleCircle.classList.add('inhale-class');
 	exhaleCircle.classList.add('exhale-class');
 	labels.forEach(function(v){
 		v.classList.add('remove-display');
 	})
 	$scope.animationComplete = true;
-	console.log("This is the scope", $scope.recommendation)
+	// console.log("This is the scope", $scope.recommendation)
 
 }
 
@@ -64,9 +63,6 @@ window.addEventListener("keydown", (function(e){
 
 
 	inhaleInitiation = Date.now();
-	console.log('\n');
-	console.log('inhaleInitiation: ', inhaleInitiation);
-	console.log('\n');
 	inhaleSecs.push(inhaleInitiation);
 
 		// console.log('inhale initiation: ', inhaleInitiation);
@@ -106,12 +102,12 @@ window.addEventListener("keyup", (function(e){
 		intBreathObj.inhaleTS=inhaleBegin;
 		intBreathObj.exhaleTS=exhaleInitiation;
 
-		console.log('intBreathObj:', intBreathObj)
+		// console.log('intBreathObj:', intBreathObj);
 
 
 		intBreathArr.push(intBreathObj);
 	// console.log("Int Arr: ", intBreathArr);
-	console.log("Intermediate Breath Array: ", intBreathArr);
+	// console.log("Intermediate Breath Array: ", intBreathArr);
 
 	if(intBreathArr.length === 6){
 		createBreathObjArr();
@@ -136,10 +132,10 @@ function createBreathObjArr(){
 			breathObj.exhaleLength = intBreathArr[i + 1].inhaleTS - intBreathArr[i].exhaleTS;
 			breathObj.totalLength = breathObj.inhaleLength + breathObj.exhaleLength;
 		}
-		console.log("breath Obj: " , breathObj);
+		// console.log("breath Obj: " , breathObj);
 		breathArr.push(breathObj);
 			// breathObj = {};
-			console.log("breath array: ", breathArr)
+			// console.log("breath array: ", breathArr)
 		}
 	}
 
@@ -156,14 +152,14 @@ var breathTotal = 0;
 function createBreathCycle(){	
 	var breathCycle = {};
 
-	console.log('From the breath cycle');
+	// console.log('From the breath cycle');
 	for(var i = 0; i < breathArr.length - 1; i++){
 		inTotal += breathArr[i].inhaleLength;
 		exTotal += breathArr[i].exhaleLength;
 		breathTotal += breathArr[i].totalLength;
 	}
 
-	console.log('Totals: ', inTotal, exTotal, breathTotal);
+	// console.log('Totals: ', inTotal, exTotal, breathTotal);
 
 	breathCycle.created = moment().format();
 	breathCycle.inhaleAvg = ((inTotal/breathArr.length)/1000).toFixed(2);
@@ -174,29 +170,20 @@ function createBreathCycle(){
 		// breathSrvc.breathCycle = breathCycle;
 
 		breathCycle = JSON.stringify(breathCycle);
-		console.log('\n');
-		console.log('breathCycle: ', breathCycle);
-		console.log('\n');
 
 		window.sessionStorage.breathCycle = breathCycle;
 
-		console.log(window.sessionStorage.breathCycle);
+		// console.log(window.sessionStorage.breathCycle);
 
 		return breathCycle;
 	}
 
 	function sendData(data){
-		console.log('Data from breathCtrl: ', data);
-		console.log('State params: ', $stateParams.username);
+		// console.log('Data from breathCtrl: ', data);
+		// console.log('State params: ', $stateParams.username);
 		if(userService.user.username){
 			$http.post('https://breathe.paigecwilley.com/api/user-breath/' + userService.user.username, data)
-			// .then(function(){
-			// 	$state.go('practice', {username:  $stateParams.username});
-			// })
 		}
-		// else {
-		// 	$state.go('practice');
-		// }
 		
 	} 
 
@@ -206,19 +193,6 @@ function createBreathCycle(){
 
 
 
-
-
-
-
-//If user is logged in, save that breathCycle to their profile
-//Take the user to the recommendation page
-
-
-
-
-//Based on breathCycle, create the recommendation
-//Populate the recommendation with the last session
-//Populate the recommendation 
 
 
 
