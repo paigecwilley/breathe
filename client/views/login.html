@@ -8,7 +8,7 @@
 				<input ng-model="user.username" type="text" class="login-fields" id="username" placeholder="username">
 				<input ng-model="user.password" type="password" id="password" class="login-fields" placeholder="password">
 			</div>
-			<button type="Submit"  class="buttons" id="login-button" ng-click="loginUser()">Log In</button>
+			<button class="buttons" id="login-button" ng-click="loginUser($event)">Log In</button>
 		</form>
 	</div>
 	<div class="create-account-login">

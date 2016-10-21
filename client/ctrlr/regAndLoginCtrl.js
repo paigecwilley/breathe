@@ -14,7 +14,8 @@ angular.module('medApp')
 			})
 		}
 
-		$scope.loginUser = function(){
+		$scope.loginUser = function(event){
+			event.preventDefault();
 			// console.log('From the login user: ', $scope.user);
 			$http.post('https://breathe.paigecwilley.com/api/login', $scope.user).then(function(successResponse){
 				if(successResponse.data) {
