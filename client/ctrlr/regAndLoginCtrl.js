@@ -5,6 +5,8 @@ angular.module('medApp')
 			event.preventDefault();
 			console.log('From the create user: ', $scope.user);
 			$http.post('https://breathe.paigecwilley.com/api/create-user', JSON.stringify($scope.user)).then(function(successResponse){
+				userService.user = successResponse.data;
+				$state.go('breathe', username: userService.user.username)
 				console.log('From create user success response: ', successResponse);
 			}, function(failedResponse){
 				console.log('From create user failed response: ', failedResponse);

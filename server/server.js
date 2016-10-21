@@ -87,7 +87,11 @@ app.post('/create-user', function(req, res, next){
 				})
 				return next(error);
 			} else {
-				return res.send('success!');
+				return res.send({
+					userId: user._id,
+					email: user.email,
+					username: user.username
+				});
 			}
 		});
 
