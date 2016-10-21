@@ -20,19 +20,28 @@ var UserSchema = new mongoose.Schema({
 		required: true,
 		trim: true
 	},
+	secured: {
+		type: Boolean,
+		default: false
+	}
 	breaths:
 		[BreathSchema]
 });
 
 UserSchema.pre('save', function(next){
 	var user = this;
-	bcrypt.hash(user.password, 10, function(err, hash){
-		if(err){
-			return next(err)
-		}
-		user.password = hash;
+	if(!user.secured){
+		bcrypt.hash(user.password, 10, function(err, hash){
+			if(err){
+				return next(err)
+			}
+			user.password = hash;
+			next();
+		})
+	}
+	else {
 		next();
-	})
+	}
 });
 
 UserSchema.statics.authenticate = function(username, password, cb){
