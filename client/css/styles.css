@@ -460,7 +460,7 @@ body, html {
 	overflow: auto;
 }
 
-.login-fields, {
+.login-fields {
 
 	margin-top: 15%;
 	width: 40%;
@@ -482,9 +482,9 @@ body, html {
 	float: right;
 }
 
-button[type="submit"] {
-	  width: 8.8vw;
-    height: 3vw;
+.buttons {
+	  width: 112px;
+    height: 40px;
     border-radius: 0.7vw;
     background-color: rgba(94, 199, 164, .6);
     border: none;
@@ -493,7 +493,11 @@ button[type="submit"] {
     font-weight: 100;
     color: gray;
     text-align: center;
-    margin-top: 10%;
+    margin-top: -0.3vw;
+}
+
+#login-button {
+  margin-top: 4.5vw;
 }
 
 .create-account-login {
@@ -526,11 +530,13 @@ form[name="signUpForm"] {
 	margin: 0 auto;
 	margin-top: 15.9%;
 	font-size: 27px;
+  overflow: auto;
 }
 
 .sign-up-fields input {
 	text-align: center;
     width: 40%;
+    min-width: 205px;
     font-size: 24px;
     margin-bottom: 12.8%;
     border: none;
@@ -556,12 +562,16 @@ form[name="signUpForm"] {
 }*/
 
 #already-have-account {
-	  position: relative;
-    top: 28.7vw;
-    left: 43.7vw;
+	  display: block;
+    margin-top: 20px;
     font-size: 0.85em;
 }
 
+@media all and (max-width: 1085px) {
+  .sign-up-fields input.left-fields, .sign-up-fields input.right-fields {
+    float: none;
+  }
+}
 
 @media all and (max-width: 960px) {
 	#sign-in {
@@ -647,5 +657,26 @@ form[name="signUpForm"] {
 
 }
 
-
+@media all and (max-width: 670px) {
+  #login-welcome {
+    width: 100%;
+  }
+  #login-form {
+    width: 100%;
+  }
+  .login-fields {
+    width: 100%;
+    display: block;
+  }
+  .sign-up-fields {
+    width: 100%;
+  }
+  .sign-up-fields input {
+    width: 100%;
+    display: block;
+  }
+  #sign-up-welcome {
+    width: 49.6%;
+  }
+}
 
