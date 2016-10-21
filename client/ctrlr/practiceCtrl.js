@@ -6,7 +6,7 @@ $scope.avgExhale;
 
 	function init() {	
 		console.log('INIT');
-			$http.get('https://breathe.paigecwilley.com/api/get-breath/' + $stateParams.username).then(function(response){
+			$http.get('http://localhost:3000/get-breath/' + $stateParams.username).then(function(response){
 
 				 
 
