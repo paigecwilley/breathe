@@ -58,10 +58,10 @@ app.use(session({
 //Create user at signup
 
 app.post('/create-user', function(req, res, next){
-	if(req.body.username &&
-		req.body.email &&
-		req.body.password &&
-		req.body.confirmPassword) {
+
+
+	if(req.body.username && req.body.email &&	req.body.password &&req.body.confirmPassword) 
+	{
 
 		if(req.body.password != req.body.confirmPassword){
 			var err = new Error('Passwords do not match');
@@ -79,21 +79,40 @@ app.post('/create-user', function(req, res, next){
 			password: req.body.password
 		};
 
-		User.create(userData, function(error, user){
-			if(error){
-				res.status(400).send({
-					message: 'Failed to create user',
-					error: error
+		User.findOne({"username" : userData.username}, function(err, user){
+			if(user){
+				res.status(401).json({
+					message: 'username already exists'
 				})
-				return next(error);
-			} else {
-				return res.send({
-					userId: user._id,
-					email: user.email,
-					username: user.username
+			}
+			else {
+				User.create(userData, function(error, user){
+					if(error){
+						res.status(400).send({
+							message: 'Failed to create user',
+							error: error
+						})
+						return next(error);
+					} else {
+						return res.send({
+							userId: user._id,
+							email: user.email,
+							username: user.username
+						});
+					}
 				});
 			}
 		});
+			// console.log(user);
+			// console.log("Req from the findOne :" , req.body);
+
+			// console.log(breathData);
+			// user.breaths.push(breathData);
+			// user.save(function(err, breathresult){
+			// 	console.log('push worked');
+			// 	res.send(breathresult);
+		// });
+
 
 	} else {
 		var err = new Error('All fields requried');
