@@ -1,7 +1,8 @@
 angular.module('medApp')
 	.controller('regAndLoginCtrl', function($scope, $http, $state, userService){
 
-		$scope.createUser = function(){
+		$scope.createUser = function(event){
+			event.preventDefault();
 			console.log('From the create user: ', $scope.user);
 			$http.post('https://breathe.paigecwilley.com/api/create-user', JSON.stringify($scope.user)).then(function(successResponse){
 				console.log('From create user success response: ', successResponse);
