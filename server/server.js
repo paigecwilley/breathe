@@ -87,7 +87,7 @@ app.post('/create-user', function(req, res, next){
 				})
 				return next(error);
 			} else {
-				return next();
+				return res.send('success!');
 			}
 		});
 
