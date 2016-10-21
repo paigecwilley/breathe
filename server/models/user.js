@@ -23,7 +23,7 @@ var UserSchema = new mongoose.Schema({
 	secured: {
 		type: Boolean,
 		default: false
-	}
+	},
 	breaths:
 		[BreathSchema]
 });
