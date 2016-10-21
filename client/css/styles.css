@@ -387,18 +387,31 @@ body, html {
 
 #breath-label {
 	  display: block;
-    width: 17vw;
+    width: 100%;
     margin: 0;
     margin-top: 5.7%;
-    margin-left: 21%;
-    padding:0;
+    padding: 0 7.5%;
     font-size: 18pt;
+    box-sizing: border-box;
 }
 
 #breath-label li {
 	list-style-type: none;
-	margin: .8vw;
+  clear: both;
+  width: 100%;
 }
+
+#breath-label li span.right {
+  display: inline-block;
+  float: right; 
+}
+
+#breath-label li span.left {
+  display: inline-block;
+  float: left; 
+}
+
+
 
 #average-num {
 	display: block;
