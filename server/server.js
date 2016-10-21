@@ -138,7 +138,7 @@ app.post('/login', function(req, res, next){
 				})
 				return next(err);
 			} else {
-				req.session.userId = user._id;
+				// req.session.userId = user._id;
 				//create a new object directly in the send and sanitize the properties you want to send--prevents sending hashed password
 				 res.send({
 					userId: user._id,
