@@ -587,9 +587,9 @@ form[name="signUpForm"] {
 }
 
 @media all and (max-width: 960px) {
-	#sign-in {
-		margin-right: 0;
-	}
+  #welcome-div {
+    width: 70%;
+  }
 	#exhale-bubble {
 		clear: both;
 	}
@@ -670,6 +670,15 @@ form[name="signUpForm"] {
 
 }
 
+@media all and (max-width: 686px) {
+  #sign-in {
+    margin-right: 0;
+  }
+  .landing-page-buttons a {
+    display: block;
+  }
+}
+
 @media all and (max-width: 670px) {
   #login-welcome {
     width: 100%;
@@ -691,5 +700,22 @@ form[name="signUpForm"] {
   #sign-up-welcome {
     width: 49.6%;
   }
+
+  #recommendation-header, #session-info-header h2, #session-info h3 {
+    font-size: 18px;
+  }
+
+  #breath-label, #recommendationContent {
+    font-size: 15px;
+  }
+
+  .breath-item, #breath-label li {
+    margin-top: 15px;
+  }
+
+  #recommendationContent {
+    padding: 0 12px;
+  }
+
 }
 

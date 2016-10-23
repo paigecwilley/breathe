@@ -36,11 +36,16 @@ function endAnimation(){
 	var inhaleCircle = document.getElementById('inhale-bubble');
 	var exhaleCircle = document.getElementById('exhale-bubble');
 	var labels = document.querySelectorAll('.label');
+	inhaleCircle.classList.remove('breath-animation');
+	exhaleCircle.classList.remove('breath-animation');
 	inhaleCircle.classList.add('inhale-class');
 	exhaleCircle.classList.add('exhale-class');
-	labels.forEach(function(v){
-		v.classList.add('remove-display');
-	})
+	for(var i = 0; i < labels.length; i++) {
+		labels[i].classList.add('remove-display');
+	}
+	// labels.forEach(function(v){
+	// 	v.classList.add('remove-display');
+	// })
 	$scope.animationComplete = true;
 	// console.log("This is the scope", $scope.recommendation)
 
@@ -49,38 +54,33 @@ function endAnimation(){
 //On keydown of space bar, initiate inhale 
 //Gets time inhale started
 
-window.addEventListener("keydown", (function(e){
+window.addEventListener("keydown", keydownHandler);
+window.addEventListener("touchstart", keydownHandler);
 
-
-	
-	if(e.key === " "){
+function keydownHandler(e) {
+	if(e.key === " " || (e.target.id == "inhale-bubble" || e.target.id == "inhale-label")){
 		if(intBreathArr.length <= 5){
 			var inhaleInitiation;
-	// console.log('keydown listener');
-	
-	animationState('add', 'inhale-bubble');
-	animationState('remove', 'exhale-bubble');
+			
+			animationState('add', 'inhale-bubble');
+			animationState('remove', 'exhale-bubble');
+
+			inhaleInitiation = Date.now();
+			inhaleSecs.push(inhaleInitiation);
 
 
-	inhaleInitiation = Date.now();
-	inhaleSecs.push(inhaleInitiation);
-
-		// console.log('inhale initiation: ', inhaleInitiation);
-		// console.log('inhale secs array ', inhaleSecs );
-
+		}
 	}
 }
 
 
-}))
-
-
-
-
 //Initiate beginning of exhale on keyup
-window.addEventListener("keyup", (function(e){
+window.addEventListener("keyup", keyupHandler);
+window.addEventListener("touchend", keyupHandler);
 
-	if(e.key === " "){
+function keyupHandler(e) {
+	console.log(e.target.id);
+	if(e.key === " " || (e.target.id == "inhale-bubble" || e.target.id == "inhale-label")){
 		var intBreathObj = {};
 		inhaleBegin = inhaleSecs[0];
 		inhaleSecs = [];
@@ -92,36 +92,26 @@ window.addEventListener("keyup", (function(e){
 			animationState('add', 'exhale-bubble');
 
 			exhaleInitiation = Date.now();
-		// console.log(exhaleInitiation);
-		// console.log('Inside the keyup')
+
+			intBreathObj.inhaleTS=inhaleBegin;
+			intBreathObj.exhaleTS=exhaleInitiation;
 
 
 
+			intBreathArr.push(intBreathObj);
 
+			if(intBreathArr.length === 6){
+				createBreathObjArr();
+				endAnimation();
+				$timeout(function(){$scope.recommendation="Go to recommendation"}, 0);
+				sendData(createBreathCycle());
+			}
 
-		intBreathObj.inhaleTS=inhaleBegin;
-		intBreathObj.exhaleTS=exhaleInitiation;
-
-		// console.log('intBreathObj:', intBreathObj);
-
-
-		intBreathArr.push(intBreathObj);
-	// console.log("Int Arr: ", intBreathArr);
-	// console.log("Intermediate Breath Array: ", intBreathArr);
-
-	if(intBreathArr.length === 6){
-		createBreathObjArr();
-		endAnimation();
-		$timeout(function(){$scope.recommendation="Go to recommendation"}, 0);
-		sendData(createBreathCycle());
+		}
 	}
 
+
 }
-}
-
-}))
-
-
 
 
 function createBreathObjArr(){
