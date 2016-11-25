@@ -1,0 +1,4 @@
+[Tue Oct 18 23:07:49.707150 2016] [proxy_http:error] [pid 20285] (20014)Internal error (specific information not available): [client 71.219.48.14:52942] AH01102: error reading status line from remote server localhost:3000, referer: https://watchdog.indielogic.co/
+[Tue Oct 18 23:07:49.707200 2016] [proxy:error] [pid 20285] [client 71.219.48.14:52942] AH00898: Error reading from remote server returned by /api/create-user, referer: https://watchdog.indielogic.co/
+[Tue Oct 18 23:10:39.093902 2016] [proxy_http:error] [pid 20297] (20014)Internal error (specific information not available): [client 71.219.48.14:52951] AH01102: error reading status line from remote server localhost:3000, referer: https://watchdog.indielogic.co/
+[Tue Oct 18 23:10:39.093946 2016] [proxy:error] [pid 20297] [client 71.219.48.14:52951] AH00898: Error reading from remote server returned by /api/create-user, referer: https://watchdog.indielogic.co/
